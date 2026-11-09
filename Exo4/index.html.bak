@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang=« fr »>
+<head>
+  <meta charset=« UTF-8 »>
+  <title>TP4 - Exercice 4 : Gestion d’un magasin</title>
+</head>
+<body>
+  <h1>Gestion d’un magasin</h1>
+  <p>Ouvre la console du navigateur (F12) pour voir les résultats.</p>
+
+  <script src=« script.js »></script>
+</body>
+</html>

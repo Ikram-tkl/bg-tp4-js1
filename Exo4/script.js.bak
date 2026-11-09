@@ -1,0 +1,62 @@
+// ===== Données =====
+"use script";
+// Q1 : un produit = un objet (nom, prix, quantité)
+const produit = { nom: « Clavier », prix: 50, quantite: 10 };
+
+// Q2 : le catalogue = un tableau de 5 produits
+const catalogue = [
+  { nom: « Clavier », prix: 50,  quantite: 10 },
+  { nom: « Souris »,  prix: 25,  quantite: 20 },
+  { nom: « Écran »,   prix: 200, quantite: 5 },
+  { nom: « Casque »,  prix: 80,  quantite: 8 },
+  { nom: « Webcam »,  prix: 40,  quantite: 12 }
+];
+
+// ===== Question 1 : valeur du stock d’un produit =====
+console.log(« === Question 1 ===« );
+const valeurStock = produit.prix * produit.quantite;
+console.log(`Valeur du stock de « ${produit.nom} » : ${valeurStock} DA`);
+
+// ===== Question 2 : produits dont le prix > prix moyen =====
+console.log(« === Question 2 ===« );
+const prixMoyen =
+  catalogue.reduce((somme, p) => somme + p.prix, 0) / catalogue.length;
+
+const produitsChers = catalogue.filter(p => p.prix > prixMoyen);
+
+console.log(`Prix moyen du catalogue : ${prixMoyen} DA`);
+console.table(produitsChers);
+
+// ===== Question 3 : total d’articles et valeur globale (reduce) =====
+console.log(« === Question 3 ===« );
+const totalArticles = catalogue.reduce((total, p) => total + p.quantite, 0);
+const valeurGlobale = catalogue.reduce(
+  (total, p) => total + p.prix * p.quantite,
+  0
+);
+
+console.log(`Nombre total d’articles : ${totalArticles}`);
+console.log(`Valeur globale du stock : ${valeurGlobale} DA`);
+
+// ===== Question 4 : fonction qui calcule la valeur du stock d’un produit =====
+console.log(« === Question 4 ===« );
+function calculerValeurStock(p) {
+  return p.prix * p.quantite;
+}
+
+// Test sur plusieurs produits
+console.log(`${catalogue[0].nom} : ${calculerValeurStock(catalogue[0])} DA`);
+console.log(`${catalogue[2].nom} : ${calculerValeurStock(catalogue[2])} DA`);
+console.log(`${catalogue[4].nom} : ${calculerValeurStock(catalogue[4])} DA`);
+
+// ===== Question 5 : traitements génériques avec callbacks =====
+console.log(« === Question 5 ===« );
+function traiterCatalogue(liste, callback) {
+  liste.forEach(callback);
+}
+
+console.log(« — Noms des produits —« );
+traiterCatalogue(catalogue, p => console.log(p.nom));
+
+console.log(« — Prix des produits —« );
+traiterCatalogue(catalogue, p => console.log(`${p.prix} DA`));
